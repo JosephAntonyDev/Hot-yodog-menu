@@ -9,9 +9,14 @@
   <link rel="icon" type="image/svg+xml" href="assets/simbolo-yoyo.svg">
   <link rel="preload" href="assets/LilitaOne-Regular.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="menu.css">
+  <script src="designs.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#menu">Saltar al menú</a>
+  <nav class="design-switch" aria-label="Diseño del menú" hidden>
+    <span>Diseño de la carta</span><button type="button" data-theme="classic" aria-pressed="true">Clásico</button><button type="button" data-theme="red" aria-pressed="false">Rojo y blanco</button>
+    <a href="#descargas">Descargar imágenes ↓</a>
+  </nav>
   <div class="menu-sheet">
     <header class="masthead">
       <img src="assets/logo-principal.svg" width="1080" height="300" alt="Hot Yo’dog · Hot dogs al vapor estilo Tapachula">
@@ -44,5 +49,13 @@
     </main>
     <footer><span>HOT YO’DOG</span><span>De Tapachula, con sabor.</span><a href="#menu">Volver al menú ↑</a></footer>
   </div>
+  <section class="social-downloads" id="descargas" aria-labelledby="downloads-title">
+    <h2 id="downloads-title">El menú, listo para compartir.</h2>
+    <p>Dos diseños en PNG · 1080 × 1920 px · Para historias y estados.</p>
+    <div class="download-grid">
+      <article><img src="downloads/menu-clasico-preview.webp" width="324" height="576" loading="lazy" alt="Menú clásico en crema con precios, promoción y horario"><h3>Clásico</h3><a href="downloads/menu-clasico.png" download="hot-yodog-menu-clasico.png">Descargar PNG clásico ↓</a></article>
+      <article><img src="downloads/menu-rojo-blanco-preview.webp" width="324" height="576" loading="lazy" alt="Menú rojo y blanco con precios, promoción y horario"><h3>Rojo y blanco</h3><a href="downloads/menu-rojo-blanco.png" download="hot-yodog-menu-rojo-blanco.png">Descargar PNG rojo y blanco ↓</a></article>
+    </div>
+  </section>
 </body>
 </html>

@@ -35,7 +35,13 @@ Verificación opcional con Node: node verify.mjs.
 
 La promoción no tiene fechas automáticas porque no se proporcionó la semana exacta de apertura. Actualiza o retira el bloque .opening cuando termine. Precios en MXN; no se inventaron teléfono, dirección ni costo de envío.
 
-## QR
+## Diseños para redes
+
+La carta permite alternar Clásico / Rojo y blanco, y descargar ambos PNG en 1080 × 1920 desde la sección de imágenes. Los PNG están en `dist/downloads`, listos para Vercel; no se generan en el navegador ni requieren servicios externos.
+
+Si cambian productos o precios, regenerar las imágenes con `node generate-social.mjs` antes de subir. Este generador local reutiliza `sharp`, `opentype.js` y el trazador tipográfico del proyecto hermano `hot-yo'dog_landing`; no se necesitan para servir la web. Extrae productos del HTML; al cambiar promoción u horario hay que actualizar también el generador. No hay publicación automática.
+
+## Dirección para el QR
 
 Usa la dirección definitiva de Vercel o tu dominio, accesible sin iniciar sesión. No uses localhost ni la anterior dirección privada de Sites. Conservando la URL, puedes editar el menú sin reimprimir el QR.
 
