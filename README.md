@@ -37,7 +37,7 @@ La promoción no tiene fechas automáticas porque no se proporcionó la semana e
 
 ## Diseños para redes
 
-La carta permite alternar Clásico / Rojo y blanco, y descargar ambos PNG en 1080 × 1920 desde la sección de imágenes. Los PNG están en `dist/downloads`, listos para Vercel; no se generan en el navegador ni requieren servicios externos.
+La carta permite alternar Clásico / Rojo y blanco / Blanco y rojo, y descargar los tres PNG en 1080 × 1920 desde la sección de imágenes. La variante blanca usa fondo blanco puro y promoción roja; la roja usa letras blancas, conservando la nariz y salchicha rojas del gato. Los PNG están en `dist/downloads`, listos para Vercel; no se generan en el navegador ni requieren servicios externos.
 
 Si cambian productos o precios, regenerar las imágenes con `node generate-social.mjs` antes de subir. Este generador local reutiliza `sharp`, `opentype.js` y el trazador tipográfico del proyecto hermano `hot-yo'dog_landing`; no se necesitan para servir la web. Extrae productos del HTML; al cambiar promoción u horario hay que actualizar también el generador. No hay publicación automática.
 
