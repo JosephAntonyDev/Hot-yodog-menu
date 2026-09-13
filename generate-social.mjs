@@ -8,6 +8,8 @@ const font=name=>{const b=fs.readFileSync(`dist/assets/${name}`);return ot.parse
 const displayFont=font('LilitaOne-Regular.ttf'),bodyFont=font('DMSans.ttf');
 const text=makeText(displayFont,bodyFont);
 const html=fs.readFileSync('dist/index.html','utf8');
+const phone=html.match(/data-phone>([^<]+)</)?.[1];
+if(!phone)throw Error('Missing phone');
 const addressLines=[...html.matchAll(/<span data-address-line>(.*?)<\/span>/g)].map(([,line])=>line);
 if(addressLines.length!==2)throw Error('Expected two address lines in the menu.');
 const items=[...html.matchAll(/<article class="menu-item"><div class="item-line"><h3>(.*?)<\/h3><span class="price"[^>]*>(.*?)<\/span><\/div><p>(.*?)<\/p><\/article>/g)].map(([,name,price,detail])=>({name,price,detail}));
@@ -42,10 +44,12 @@ for(const theme of ['classic','red','white']){
  const promoBg=red?'#FFFFFF':'#A9322A',promoInk=red?'#A9322A':'#FFFFFF';
  body+=`<rect x="80" y="1266" width="920" height="216" rx="12" fill="${promoBg}"/>`;
  body+=t('SEMANA DE APERTURA',108,1308,24,promoInk)+t('Hot dog + horchata',108,1365,43,promoInk,'display',660)+t('Tradicional o combinado',108,1411,29,promoInk,'body',650)+t('Incluye un vaso de horchata.',108,1447,25,promoInk,'body',650)+t('$50',970,1392,83,promoInk,'display',200,'right');
- body+=t('LUNES A DOMINGO',80,1548,26,accent)+t('6:30 p. m. — 11:30 p. m.',80,1595,38,ink,'display');
- body+=t('Servicio a domicilio',80,1660,30,ink,'body')+t('Costo extra según tu ubicación. Precios en MXN.',80,1704,25,ink,'body');
- body+=line(1734)+t('ENCUÉNTRANOS AQUÍ',80,1774,24,accent);
- addressLines.forEach((address,i)=>{body+=t(address,80,1812+i*38,27,ink,'body');});
+ body+=t('PEDIDOS POR WHATSAPP',80,1530,25,accent)+t(phone,80,1585,49,accent,'display');
+ body+=t('Lunes a domingo · 6:30 p. m. — 11:30 p. m.',80,1641,29,ink);
+ body+=t('Envío a domicilio con costo extra según ubicación.',80,1688,25,ink);
+ body+=line(1720)+t('ENCUÉNTRANOS AQUÍ',80,1760,24,accent);
+ addressLines.forEach((address,i)=>{body+=t(address,80,1800+i*38,27,ink,'body');});
+ body+=t('Precios en MXN.',80,1865,20,ink);
  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">${body}</svg>`;
  const name=red?'menu-rojo-blanco':theme==='white'?'menu-blanco-rojo':'menu-clasico';
  fs.writeFileSync(`dist/downloads/${name}.svg`,svg);
