@@ -3,10 +3,14 @@ import assert from 'node:assert/strict';
 const html=fs.readFileSync('dist/index.html','utf8');
 for(const [,ref] of html.matchAll(/(?:src|href)="([^"]+)"/g)){
   if(ref.startsWith('#'))assert(html.includes(`id="${ref.slice(1)}"`));
+  else if(ref.startsWith('https://'))assert.equal(new URL(ref).hostname,'www.bing.com');
   else assert(fs.existsSync(`dist/${ref}`),`Missing asset: ${ref}`);
 }
 for(const text of ['Tradicional','Combinado','horchata','Coca-Cola','6:30 p. m.','11:30 p. m.','Servicio a domicilio'])assert(html.includes(text),text);
 assert.equal((html.match(/class="price"/g)||[]).length,4);
+assert(html.includes('Carretera Villaflores entre 14 y 15 Oriente Sur'));
+assert(html.includes('Tuxtla Gutiérrez, México, 29080'));
+assert.equal((html.match(/data-address-line/g)||[]).length,2);
 assert(html.includes('35 pesos')&&html.includes('45 pesos')&&html.includes('25 pesos'));
 const css=fs.readFileSync('dist/menu.css','utf8');
 for(const [,ref] of css.matchAll(/url\('([^']+)'\)/g))assert(fs.existsSync(`dist/${ref}`));

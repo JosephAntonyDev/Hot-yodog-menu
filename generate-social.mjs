@@ -8,6 +8,8 @@ const font=name=>{const b=fs.readFileSync(`dist/assets/${name}`);return ot.parse
 const displayFont=font('LilitaOne-Regular.ttf'),bodyFont=font('DMSans.ttf');
 const text=makeText(displayFont,bodyFont);
 const html=fs.readFileSync('dist/index.html','utf8');
+const addressLines=[...html.matchAll(/<span data-address-line>(.*?)<\/span>/g)].map(([,line])=>line);
+if(addressLines.length!==2)throw Error('Expected two address lines in the menu.');
 const items=[...html.matchAll(/<article class="menu-item"><div class="item-line"><h3>(.*?)<\/h3><span class="price"[^>]*>(.*?)<\/span><\/div><p>(.*?)<\/p><\/article>/g)].map(([,name,price,detail])=>({name,price,detail}));
 if(items.length!==4)throw Error('Expected four menu items; review export layout when menu changes.');
 const logo=fs.readFileSync('dist/assets/logo-principal.svg','utf8');
@@ -30,7 +32,7 @@ for(const theme of ['classic','red','white']){
  };
  const line=y=>`<path d="M80 ${y}H1000" stroke="${ink}" stroke-opacity=".3" stroke-width="2"/>`;
  let body=`<rect width="1080" height="1920" fill="${bg}"/>`;
- if(!red)body+=`<rect x="42" y="160" width="996" height="1590" rx="8" fill="none" stroke="${theme==='white'?'#DDDDDD':'#D9CBB5'}" stroke-width="2"/>`;
+ if(!red)body+=`<rect x="42" y="160" width="996" height="1720" rx="8" fill="none" stroke="${theme==='white'?'#DDDDDD':'#D9CBB5'}" stroke-width="2"/>`;
  body+=`<g transform="translate(80 205) scale(.85)">${(red?whiteLetterLogo:logo).replace(/<svg[^>]*>|<\/svg>/g,'')}</g>`;
  body+=t('NUESTRA CARTA',80,515,24,accent)+t('¿Qué se te antoja?',80,590,72,ink,'display');
  body+=line(627)+t('HOT YO’DOGS',80,685,31,accent,'body');
@@ -42,6 +44,8 @@ for(const theme of ['classic','red','white']){
  body+=t('SEMANA DE APERTURA',108,1308,24,promoInk)+t('Hot dog + horchata',108,1365,43,promoInk,'display',660)+t('Tradicional o combinado',108,1411,29,promoInk,'body',650)+t('Incluye un vaso de horchata.',108,1447,25,promoInk,'body',650)+t('$50',970,1392,83,promoInk,'display',200,'right');
  body+=t('LUNES A DOMINGO',80,1548,26,accent)+t('6:30 p. m. — 11:30 p. m.',80,1595,38,ink,'display');
  body+=t('Servicio a domicilio',80,1660,30,ink,'body')+t('Costo extra según tu ubicación. Precios en MXN.',80,1704,25,ink,'body');
+ body+=line(1734)+t('ENCUÉNTRANOS AQUÍ',80,1774,24,accent);
+ addressLines.forEach((address,i)=>{body+=t(address,80,1812+i*38,27,ink,'body');});
  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">${body}</svg>`;
  const name=red?'menu-rojo-blanco':theme==='white'?'menu-blanco-rojo':'menu-clasico';
  fs.writeFileSync(`dist/downloads/${name}.svg`,svg);

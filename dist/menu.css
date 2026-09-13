@@ -9,6 +9,10 @@
 @media(max-width:600px){.design-switch{padding:18px 20px 0;margin-bottom:20px}.design-switch>span{width:100%}.design-switch>a{margin-left:0}.social-downloads{padding:0 20px 30px}.download-grid{grid-template-columns:1fr}.theme-red .intro h1{font-size:2.05rem}}
 @media print{.design-switch,.social-downloads{display:none!important}}
 .menu-sheet{color:var(--ink)}
+.location{border-top:1px solid var(--line);padding:24px 0 28px;break-inside:avoid}
+.location h2{color:var(--red);margin:0 0 12px}
+.location address{font-style:normal;font-size:1rem;line-height:1.65;overflow-wrap:anywhere}
+.location a{display:inline-block;color:var(--red);padding:12px 0 0;text-underline-offset:4px;font-weight:600}
 .theme-white{background:#fff;min-height:100vh}
 .theme-white .menu-sheet{--paper:#fff;--line:#ddd;background:#fff}
 .download-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
