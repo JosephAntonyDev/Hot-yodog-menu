@@ -9,7 +9,8 @@ for(const [,ref] of html.matchAll(/(?:src|href)="([^"]+)"/g)){
 }
 for(const text of ['Tradicional','Combinado','horchata','Coca-Cola','6:30 p. m.','11:30 p. m.','Servicio a domicilio'])assert(html.includes(text),text);
 assert.equal((html.match(/class="price"/g)||[]).length,4);
-assert(html.includes('Carretera Villaflores entre 14 y 15 Oriente Sur'));
+assert(html.includes('Carretera Villaflores entre 14 y 15 Sur Oriente'));
+assert(!/Oriente(?:%20| )Sur/i.test(html));
 assert(html.includes('Tuxtla Gutiérrez, México, 29080'));
 assert.equal((html.match(/data-address-line/g)||[]).length,2);
 assert(html.includes('data-phone>+52 1 961 850 6268</a>'));
