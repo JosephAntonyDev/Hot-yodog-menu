@@ -17,6 +17,8 @@ assert(html.includes('data-phone>+52 1 961 850 6268</a>'));
 assert(html.includes('https://wa.me/5219618506268'));
 assert(html.includes('35 pesos')&&html.includes('45 pesos')&&html.includes('25 pesos'));
 assert(html.includes('75'),'Promo price must be 75 pesos');
+assert(html.includes('PROMOCIÓN ESPECIAL'),'Must include PROMOCIÓN ESPECIAL');
+assert(!html.includes('SEMANA DE APERTURA'),'Must not include SEMANA DE APERTURA');
 const css=fs.readFileSync('dist/menu.css','utf8');
 for(const [,ref] of css.matchAll(/url\('([^']+)'\)/g))assert(fs.existsSync(`dist/${ref}`));
 assert(css.includes('max-width:600px')&&css.includes('grid-template-columns:1fr'));
