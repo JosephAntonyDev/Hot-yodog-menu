@@ -13,7 +13,7 @@ if(!phone)throw Error('Missing phone');
 const addressLines=[...html.matchAll(/<span data-address-line>(.*?)<\/span>/g)].map(([,line])=>line);
 if(addressLines.length!==2)throw Error('Expected two address lines in the menu.');
 const items=[...html.matchAll(/<article class="menu-item"><div class="item-line"><h3>(.*?)<\/h3><span class="price"[^>]*>(.*?)<\/span><\/div><p>(.*?)<\/p><\/article>/g)].map(([,name,price,detail])=>({name,price,detail}));
-if(items.length!==4)throw Error('Expected four menu items; review export layout when menu changes.');
+if(items.length!==3)throw Error('Expected three menu items; review export layout when menu changes.');
 const logo=fs.readFileSync('dist/assets/logo-principal.svg','utf8');
 // Recolor only lettering; preserve the entire mascot, including its red details.
 const letteringStart=logo.indexOf('<g transform="translate(286 49)">');
@@ -37,13 +37,13 @@ for(const theme of ['classic','red','white']){
  if(!red)body+=`<rect x="42" y="160" width="996" height="1720" rx="8" fill="none" stroke="${theme==='white'?'#DDDDDD':'#D9CBB5'}" stroke-width="2"/>`;
  body+=`<g transform="translate(80 205) scale(.85)">${(red?whiteLetterLogo:logo).replace(/<svg[^>]*>|<\/svg>/g,'')}</g>`;
  body+=t('NUESTRA CARTA',80,515,24,accent)+t('¿Qué se te antoja?',80,590,72,ink,'display');
- body+=line(627)+t('HOT YO’DOGS',80,685,31,accent,'body');
+ body+=line(635)+t('HOT YO’DOGS',80,695,31,accent,'body');
  const row=(item,y)=>t(item.name,80,y,45,ink,'display',750)+t(item.price,1000,y,48,accent,'display',150,'right')+t(item.detail,80,y+47,27,ink,'body',890);
- body+=row(items[0],750)+row(items[1],867);
- body+=line(940)+t('PARA ACOMPAÑAR',80,999,31,accent)+row(items[2],1065)+row(items[3],1178);
+ body+=row(items[0],765)+row(items[1],895);
+ body+=line(980)+t('PARA ACOMPAÑAR',80,1040,31,accent)+row(items[2],1110);
  const promoBg=red?'#FFFFFF':'#A9322A',promoInk=red?'#A9322A':'#FFFFFF';
- body+=`<rect x="80" y="1266" width="920" height="216" rx="12" fill="${promoBg}"/>`;
- body+=t('SEMANA DE APERTURA',108,1308,24,promoInk)+t('Hot dog + horchata',108,1365,43,promoInk,'display',660)+t('Tradicional o combinado',108,1411,29,promoInk,'body',650)+t('Incluye un vaso de horchata.',108,1447,25,promoInk,'body',650)+t('$50',970,1392,83,promoInk,'display',200,'right');
+ body+=`<rect x="80" y="1236" width="920" height="216" rx="12" fill="${promoBg}"/>`;
+ body+=t('SEMANA DE APERTURA',108,1278,24,promoInk)+t('Hot dog + Coca-Cola de vidrio',108,1335,41,promoInk,'display',660)+t('Tradicional o combinado',108,1381,29,promoInk,'body',650)+t('Incluye una Coca-Cola de vidrio.',108,1417,25,promoInk,'body',650)+t('$75',970,1362,83,promoInk,'display',200,'right');
  body+=t('PEDIDOS POR WHATSAPP',80,1530,25,accent)+t(phone,80,1585,49,accent,'display');
  body+=t('Lunes a domingo · 6:30 p. m. — 11:30 p. m.',80,1641,29,ink);
  body+=t('Envío a domicilio con costo extra según ubicación.',80,1688,25,ink);
