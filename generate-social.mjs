@@ -43,7 +43,7 @@ for(const theme of ['classic','red','white']){
  body+=line(940)+t('PARA ACOMPAÑAR',80,999,31,accent)+row(items[2],1065)+row(items[3],1178);
  const promoBg=red?'#FFFFFF':'#A9322A',promoInk=red?'#A9322A':'#FFFFFF';
  body+=`<rect x="80" y="1266" width="920" height="216" rx="12" fill="${promoBg}"/>`;
- body+=t('PROMOCIÓN ESPECIAL',108,1308,24,promoInk)+t('Hot dog combinado + Coca-Cola de vidrio',108,1365,36,promoInk,'display',660)+t('Un hot dog combinado al vapor.',108,1411,28,promoInk,'body',650)+t('Incluye una Coca-Cola de vidrio.',108,1447,25,promoInk,'body',650)+t('$75',970,1392,83,promoInk,'display',200,'right');
+ body+=t('PROMOCIÓN ESPECIAL',108,1308,24,promoInk)+t('Hot dog combinado + Coca-Cola de vidrio',108,1365,36,promoInk,'display',660)+t('Un hot dog combinado al vapor.',108,1411,28,promoInk,'body',650)+t('Incluye una Coca-Cola de vidrio.',108,1447,25,promoInk,'body',650)+t('$70',970,1392,83,promoInk,'display',200,'right');
  body+=t('PEDIDOS POR WHATSAPP',80,1530,25,accent)+t(phone,80,1585,49,accent,'display');
  body+=t('Lunes a domingo · 6:30 p. m. — 11:30 p. m.',80,1641,29,ink);
  body+=t('Envío a domicilio con costo extra según ubicación.',80,1688,25,ink);
