@@ -7,16 +7,15 @@ for(const [,ref] of html.matchAll(/(?:src|href)="([^"]+)"/g)){
   else if(ref.startsWith('tel:'))assert.equal(ref,'tel:+529618506268');
   else assert(fs.existsSync(`dist/${ref}`),`Missing asset: ${ref}`);
 }
-for(const text of ['Tradicional','Combinado','Coca-Cola','6:30 p. m.','11:30 p. m.','Servicio a domicilio'])assert(html.includes(text),text);
-assert(!html.includes('horchata'),'Horchata must not be in the menu');
-assert.equal((html.match(/class="price"/g)||[]).length,3);
+for(const text of ['Tradicional','Combinado','horchata','Coca-Cola','6:30 p. m.','11:30 p. m.','Servicio a domicilio'])assert(html.includes(text),text);
+assert.equal((html.match(/class="price"/g)||[]).length,4);
 assert(html.includes('Carretera Villaflores entre 14 y 15 Sur Oriente'));
 assert(!/Oriente(?:%20| )Sur/i.test(html));
 assert(html.includes('Tuxtla Gutiérrez, México, 29080'));
 assert.equal((html.match(/data-address-line/g)||[]).length,2);
 assert(html.includes('data-phone>+52 1 961 850 6268</a>'));
 assert(html.includes('https://wa.me/5219618506268'));
-assert(html.includes('35 pesos')&&html.includes('45 pesos'));
+assert(html.includes('35 pesos')&&html.includes('45 pesos')&&html.includes('25 pesos'));
 assert(html.includes('75'),'Promo price must be 75 pesos');
 const css=fs.readFileSync('dist/menu.css','utf8');
 for(const [,ref] of css.matchAll(/url\('([^']+)'\)/g))assert(fs.existsSync(`dist/${ref}`));
