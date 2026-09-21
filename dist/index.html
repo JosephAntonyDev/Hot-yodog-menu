@@ -14,7 +14,17 @@
 <body>
   <a class="skip" href="#menu">Saltar al menú</a>
   <nav class="design-switch" aria-label="Diseño del menú" hidden>
-    <span>Diseño de la carta</span><button type="button" data-theme="classic" aria-pressed="true">Clásico</button><button type="button" data-theme="red" aria-pressed="false">Rojo y blanco</button><button type="button" data-theme="white" aria-pressed="false">Blanco y rojo</button>
+    <div class="switch-group">
+      <span>Diseño</span>
+      <button type="button" data-theme="classic" aria-pressed="true">Clásico</button>
+      <button type="button" data-theme="red" aria-pressed="false">Rojo y blanco</button>
+      <button type="button" data-theme="white" aria-pressed="false">Blanco y rojo</button>
+    </div>
+    <div class="switch-group">
+      <span>Promoción</span>
+      <button type="button" data-promo="true" aria-pressed="true">Con promo</button>
+      <button type="button" data-promo="false" aria-pressed="false">Sin promo</button>
+    </div>
     <a href="#descargas">Descargar imágenes ↓</a>
   </nav>
   <div class="menu-sheet">
@@ -57,11 +67,24 @@
   </div>
   <section class="social-downloads" id="descargas" aria-labelledby="downloads-title">
     <h2 id="downloads-title">El menú, listo para compartir.</h2>
-    <p>Tres diseños en PNG · 1080 × 1920 px · Para historias y estados.</p>
+    <p>Formatos en PNG de alta resolución · 1080 × 1920 px · Para historias y estados.</p>
+    <div class="download-section-heading">
+      <h3>Con Promoción Especial</h3>
+      <span>Hot dog combinado + Coca-Cola de vidrio por $70</span>
+    </div>
     <div class="download-grid">
-      <article><img src="downloads/menu-clasico-preview.webp" width="324" height="576" loading="lazy" alt="Menú clásico en crema con precios, promoción y horario"><h3>Clásico</h3><a href="downloads/menu-clasico.png" download="hot-yodog-menu-clasico.png">Descargar PNG clásico ↓</a></article>
-      <article><img src="downloads/menu-rojo-blanco-preview.webp" width="324" height="576" loading="lazy" alt="Menú rojo y blanco con precios, promoción y horario"><h3>Rojo y blanco</h3><a href="downloads/menu-rojo-blanco.png" download="hot-yodog-menu-rojo-blanco.png">Descargar PNG rojo y blanco ↓</a></article>
-      <article><img src="downloads/menu-blanco-rojo-preview.webp" width="324" height="576" loading="lazy" alt="Menú de fondo blanco con promoción roja, precios y horario"><h3>Blanco y rojo</h3><a href="downloads/menu-blanco-rojo.png" download="hot-yodog-menu-blanco-rojo.png">Descargar PNG blanco y rojo ↓</a></article>
+      <article><img src="downloads/menu-clasico-preview.webp" width="324" height="576" loading="lazy" alt="Menú clásico en crema con precios, promoción y horario"><h4>Clásico</h4><a href="downloads/menu-clasico.png" download="hot-yodog-menu-clasico-promo.png">Descargar con promo ↓</a></article>
+      <article><img src="downloads/menu-rojo-blanco-preview.webp" width="324" height="576" loading="lazy" alt="Menú rojo y blanco con precios, promoción y horario"><h4>Rojo y blanco</h4><a href="downloads/menu-rojo-blanco.png" download="hot-yodog-menu-rojo-blanco-promo.png">Descargar con promo ↓</a></article>
+      <article><img src="downloads/menu-blanco-rojo-preview.webp" width="324" height="576" loading="lazy" alt="Menú de fondo blanco con promoción roja, precios y horario"><h4>Blanco y rojo</h4><a href="downloads/menu-blanco-rojo.png" download="hot-yodog-menu-blanco-rojo-promo.png">Descargar con promo ↓</a></article>
+    </div>
+    <div class="download-section-heading">
+      <h3>Carta Regular (Sin Promoción)</h3>
+      <span>Menú tradicional permanente con sello de autenticidad de Yoyo</span>
+    </div>
+    <div class="download-grid">
+      <article><img src="downloads/menu-clasico-sin-promo-preview.webp" width="324" height="576" loading="lazy" alt="Menú clásico en crema sin promoción, carta regular y horario"><h4>Clásico (Sin promo)</h4><a href="downloads/menu-clasico-sin-promo.png" download="hot-yodog-menu-clasico-sin-promo.png">Descargar sin promo ↓</a></article>
+      <article><img src="downloads/menu-rojo-blanco-sin-promo-preview.webp" width="324" height="576" loading="lazy" alt="Menú rojo y blanco sin promoción, carta regular y horario"><h4>Rojo y blanco (Sin promo)</h4><a href="downloads/menu-rojo-blanco-sin-promo.png" download="hot-yodog-menu-rojo-blanco-sin-promo.png">Descargar sin promo ↓</a></article>
+      <article><img src="downloads/menu-blanco-rojo-sin-promo-preview.webp" width="324" height="576" loading="lazy" alt="Menú blanco y rojo sin promoción, carta regular y horario"><h4>Blanco y rojo (Sin promo)</h4><a href="downloads/menu-blanco-rojo-sin-promo.png" download="hot-yodog-menu-blanco-rojo-sin-promo.png">Descargar sin promo ↓</a></article>
     </div>
   </section>
 </body>

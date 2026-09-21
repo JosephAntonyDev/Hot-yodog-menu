@@ -30,12 +30,18 @@ assert.equal(inverse.slice(0,boundary),logo.slice(0,boundary),'Mascot colors mus
 assert.equal((inverse.slice(0,boundary).match(/#A9322A/g)||[]).length,2,'Keep red nose and sausage');
 assert(!inverse.slice(boundary).includes('#A9322A'),'Inverse lettering must be white');
 for(const theme of ['classic','red','white'])assert(html.includes(`data-theme="${theme}"`));
-for(const name of ['clasico','rojo-blanco','blanco-rojo']){
- const png=fs.readFileSync(`dist/downloads/menu-${name}.png`);
- assert.equal(png.readUInt32BE(16),1080);
- assert.equal(png.readUInt32BE(20),1920);
+assert(html.includes('data-promo="true"')&&html.includes('data-promo="false"'));
+for(const suffix of ['','-sin-promo']){
+ for(const name of ['clasico','rojo-blanco','blanco-rojo']){
+  const png=fs.readFileSync(`dist/downloads/menu-${name}${suffix}.png`);
+  assert.equal(png.readUInt32BE(16),1080);
+  assert.equal(png.readUInt32BE(20),1920);
+ }
 }
 const white=fs.readFileSync('dist/downloads/menu-blanco-rojo.svg','utf8');
 assert(white.includes('<rect width="1080" height="1920" fill="#FFFFFF"/>'));
 assert(white.includes('height="216" rx="12" fill="#A9322A"'));
-console.log('Verified: menu content, links, assets, responsive rules, 3 themes, 1080×1920 PNGs, white background/red promo, and unchanged mascot colors.');
+const whiteSinPromo=fs.readFileSync('dist/downloads/menu-blanco-rojo-sin-promo.svg','utf8');
+assert(!whiteSinPromo.includes('height="216" rx="12" fill="#A9322A"'),'Sin promo must not have promo box');
+assert(whiteSinPromo.includes('id="mark"'),'Sin promo must include Yoyo mascot mark');
+console.log('Verified: menu content, links, assets, responsive rules, 3 themes (with and without promo), six 1080×1920 PNGs, white background/red promo, and unchanged mascot colors.');
