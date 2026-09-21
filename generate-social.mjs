@@ -53,12 +53,10 @@ for(const hasPromo of [true,false]){
     const row=(item,y)=>t(item.name,80,y,45,ink,'display',750)+t(item.price,1000,y,48,accent,'display',150,'right')+t(item.detail,80,y+47,27,ink,'body',890);
     body+=row(items[0],755)+row(items[1],875);
     body+=line(955)+t('PARA ACOMPAÑAR',80,1015,31,accent)+row(items[2],1085)+row(items[3],1205);
-    body+=line(1290);
-    body+=`<g transform="translate(80 1320) scale(.5)">${simboloYoyo}</g>`;
-    body+=t('RECETA 100% AL VAPOR · ESTILO TAPACHULA',220,1370,22,accent,'body');
-    body+=t('Hechos al vapor. Con el carácter de Yoyo.',220,1415,30,ink,'display',760);
-    body+=t('Pan nube ultrasuave, salchicha arropada en jamón y salsa dulce casera.',220,1455,24,ink,'body',760);
-    body+=line(1495);
+    body+=line(1295);
+    body+=`<g transform="translate(80 1335) scale(.42)">${simboloYoyo}</g>`;
+    body+=t('RECETA 100% AL VAPOR · ESTILO TAPACHULA',200,1394,26,accent,'body');
+    body+=line(1470);
   }
 
   body+=t('PEDIDOS POR WHATSAPP',80,1530,25,accent)+t(phone,80,1585,49,accent,'display');
