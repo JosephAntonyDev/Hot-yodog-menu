@@ -13,7 +13,7 @@ if(!phone)throw Error('Missing phone');
 const addressLines=[...html.matchAll(/<span data-address-line>(.*?)<\/span>/g)].map(([,line])=>line);
 if(addressLines.length!==2)throw Error('Expected two address lines in the menu.');
 const items=[...html.matchAll(/<article class="menu-item"><div class="item-line"><h3>(.*?)<\/h3><span class="price"[^>]*>(.*?)<\/span><\/div><p>(.*?)<\/p><\/article>/g)].map(([,name,price,detail])=>({name,price,detail}));
-if(items.length!==4)throw Error('Expected four menu items; review export layout when menu changes.');
+if(items.length!==5)throw Error('Expected five menu items; review export layout when menu changes.');
 const logo=fs.readFileSync('dist/assets/logo-principal.svg','utf8');
 // Recolor only lettering; preserve the entire mascot, including its red details.
 const letteringStart=logo.indexOf('<g transform="translate(286 49)">');
@@ -42,17 +42,17 @@ for(const hasPromo of [true,false]){
 
   if(hasPromo){
     body+=line(627)+t('HOT YO’DOGS',80,685,31,accent,'body');
-    const row=(item,y)=>t(item.name,80,y,45,ink,'display',750)+t(item.price,1000,y,48,accent,'display',150,'right')+t(item.detail,80,y+47,27,ink,'body',890);
-    body+=row(items[0],750)+row(items[1],867);
-    body+=line(940)+t('PARA ACOMPAÑAR',80,999,31,accent)+row(items[2],1065)+row(items[3],1178);
+    const row=(item,y)=>t(item.name,80,y,45,ink,'display',750)+t(item.price,1000,y,48,accent,'display',150,'right')+t(item.detail,80,y+40,27,ink,'body',890);
+    body+=row(items[0],730)+row(items[1],825)+row(items[2],920);
+    body+=line(1000)+t('PARA ACOMPAÑAR',80,1045,31,accent)+row(items[3],1100)+row(items[4],1195);
     const promoBg=red?'#FFFFFF':'#A9322A',promoInk=red?'#A9322A':'#FFFFFF';
     body+=`<rect x="80" y="1266" width="920" height="216" rx="12" fill="${promoBg}"/>`;
     body+=t('PROMOCIÓN ESPECIAL',108,1308,24,promoInk)+t('Hot dog combinado + Coca-Cola de vidrio',108,1365,36,promoInk,'display',660)+t('Un hot dog combinado al vapor.',108,1411,28,promoInk,'body',650)+t('Incluye una Coca-Cola de vidrio.',108,1447,25,promoInk,'body',650)+t('$70',970,1392,83,promoInk,'display',200,'right');
   } else {
     body+=line(627)+t('HOT YO’DOGS',80,685,31,accent,'body');
     const row=(item,y)=>t(item.name,80,y,45,ink,'display',750)+t(item.price,1000,y,48,accent,'display',150,'right')+t(item.detail,80,y+47,27,ink,'body',890);
-    body+=row(items[0],755)+row(items[1],875);
-    body+=line(955)+t('PARA ACOMPAÑAR',80,1015,31,accent)+row(items[2],1085)+row(items[3],1205);
+    body+=row(items[0],730)+row(items[1],825)+row(items[2],920);
+    body+=line(1000)+t('PARA ACOMPAÑAR',80,1045,31,accent)+row(items[3],1100)+row(items[4],1195);
     body+=line(1295);
     body+=`<g transform="translate(80 1335) scale(.42)">${simboloYoyo}</g>`;
     body+=t('RECETA 100% AL VAPOR · ESTILO TAPACHULA',200,1394,26,accent,'body');

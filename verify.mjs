@@ -7,8 +7,9 @@ for(const [,ref] of html.matchAll(/(?:src|href)="([^"]+)"/g)){
   else if(ref.startsWith('tel:'))assert.equal(ref,'tel:+529618506268');
   else assert(fs.existsSync(`dist/${ref}`),`Missing asset: ${ref}`);
 }
-for(const text of ['Tradicional','Combinado','horchata','Coca-Cola','6:30 p. m.','11:30 p. m.','Servicio a domicilio'])assert(html.includes(text),text);
-assert.equal((html.match(/class="price"/g)||[]).length,4);
+for(const text of ['Tradicional','Combinado','Hot dog especial','Jamón, salchicha, pollo, quesillo, tomate y cebolla.','horchata','Coca-Cola','6:30 p. m.','11:30 p. m.','Servicio a domicilio'])assert(html.includes(text),text);
+assert.equal((html.match(/class="price"/g)||[]).length,5);
+assert(html.includes('aria-label="60 pesos">$60</span>'));
 assert(html.includes('Carretera Villaflores entre 14 y 15 Sur Oriente'));
 assert(!/Oriente(?:%20| )Sur/i.test(html));
 assert(html.includes('Tuxtla Gutiérrez, México, 29080'));
