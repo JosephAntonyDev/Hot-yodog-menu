@@ -60,7 +60,7 @@ for(const hasPromo of [true,false]){
   }
 
   body+=t('PEDIDOS POR WHATSAPP',80,1530,25,accent)+t(phone,80,1585,49,accent,'display');
-  body+=t('Lunes a domingo · 6:30 p. m. — 11:30 p. m.',80,1641,29,ink);
+  body+=t('Lunes a sábado · 7:20 p. m. — 11:30 p. m. · Domingos cerrado',80,1641,28,ink);
   body+=t('Envío a domicilio con costo extra según ubicación.',80,1688,25,ink);
   body+=line(1720)+t('ENCUÉNTRANOS AQUÍ',80,1760,24,accent);
   addressLines.forEach((address,i)=>{body+=t(address,80,1800+i*38,27,ink,'body');});

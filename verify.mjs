@@ -7,7 +7,9 @@ for(const [,ref] of html.matchAll(/(?:src|href)="([^"]+)"/g)){
   else if(ref.startsWith('tel:'))assert.equal(ref,'tel:+529618506268');
   else assert(fs.existsSync(`dist/${ref}`),`Missing asset: ${ref}`);
 }
-for(const text of ['Tradicional','Combinado','Hot dog especial','Jamón, salchicha, pollo, quesillo, tomate y cebolla.','Coca-Cola','6:30 p. m.','11:30 p. m.','Servicio a domicilio'])assert(html.includes(text),text);
+for(const text of ['Tradicional','Combinado','Hot dog especial','Jamón, salchicha, pollo, quesillo, tomate y cebolla.','Coca-Cola','7:20 p. m.','11:30 p. m.','Servicio a domicilio','Lunes a sábado','Domingos cerrado'])assert(html.includes(text),text);
+assert(!html.includes('6:30'));
+assert(!html.includes('Lunes a domingo'));
 assert(!/horchata/i.test(html));
 assert.equal((html.match(/class="price"/g)||[]).length,4);
 assert(html.includes('aria-label="55 pesos">$55</span>'));
